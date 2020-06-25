@@ -35,7 +35,7 @@ describe("Convert hex code to rgb", () => {
       try {
         color.hexToRgb(c);
       } catch (e) {
-        e.message.should.equal("Invalid hex color format");
+        e.message.should.equal("Invalid hex format");
       }
     });
     done();
@@ -66,14 +66,26 @@ describe("Check if the color is dark or bright", () => {
   });
 
   it("it should not check an invalid hex code format", (done) => {
-    const invalidColors = ["A4E8", "R12F35", "#@12345", "#FfFfF#"];
-    invalidColors.forEach((c) => {
-      try {
-        color.isDarkColor(c);
-      } catch (e) {
-        e.message.should.equal("Invalid hex color format");
-      }
-    });
+    const invalidColors = ["A4E8", [256, -1, 0]];
+
+    try {
+      color.isDarkColor(invalidColors[0]);
+    } catch (e) {
+      e.message.should.equal("Invalid hex format");
+    }
+
+    try {
+      color.isDarkColor(...invalidColors[1]);
+    } catch (e) {
+      e.message.should.equal("Invalid RGB format");
+    }
+
+    try {
+      color.isDarkColor(1, 200);
+    } catch (e) {
+      e.message.should.equal("1 or 3 parameters are required");
+    }
+
     done();
   });
 });

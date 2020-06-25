@@ -3,7 +3,7 @@ const validateHexColor = (color: string): string => {
   let hex = color;
 
   if (hex.charAt(0) === "#") hex = hex.substr(1);
-  if (!hexColorRegex.test(hex)) throw new Error("Invalid hex color format");
+  if (!hexColorRegex.test(hex)) throw new Error("Invalid hex format");
 
   // Convert the shortened hex color to a full one
   // This is important because the function gives the correct result only when it's provided a full hex color
@@ -34,8 +34,11 @@ const isDarkColor = (...args: Array<string | number>): boolean => {
     rgb = hexToRgb(args[0])
       .split(",")
       .map((n) => parseInt(n));
-  else if (args.length === 3) rgb = args.map((n) => parseInt(n as string));
-  else throw new Error("1 or 3 parameters are required");
+  else if (args.length === 3) {
+    if (!args.every((p) => p >= 0 && p <= 255))
+      throw new Error("Invalid RGB format");
+    rgb = args.map((n) => parseInt(n as string));
+  } else throw new Error("1 or 3 parameters are required");
 
   const [r, g, b] = rgb;
   const hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));

@@ -7,7 +7,7 @@ var validateHexColor = function (color) {
     if (hex.charAt(0) === "#")
         hex = hex.substr(1);
     if (!hexColorRegex.test(hex))
-        throw new Error("Invalid hex color format");
+        throw new Error("Invalid hex format");
     // Convert the shortened hex color to a full one
     // This is important because the function gives the correct result only when it's provided a full hex color
     if (hex.length === 3) {
@@ -37,8 +37,11 @@ var isDarkColor = function () {
         rgb = hexToRgb(args[0])
             .split(",")
             .map(function (n) { return parseInt(n); });
-    else if (args.length === 3)
+    else if (args.length === 3) {
+        if (!args.every(function (p) { return p >= 0 && p <= 255; }))
+            throw new Error("Invalid RGB format");
         rgb = args.map(function (n) { return parseInt(n); });
+    }
     else
         throw new Error("1 or 3 parameters are required");
     var r = rgb[0], g = rgb[1], b = rgb[2];
