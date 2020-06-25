@@ -1,5 +1,5 @@
 {
-  "name": "color-utils",
+  "name": "color-utili",
   "version": "1.0.0",
   "description": "Utility functions that help you work with color.",
   "main": "./dist/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mysbeario/color-utils.git"
+    "url": "git+https://github.com/Mysbeario/color-utili.git"
   },
   "keywords": [
     "utility",
@@ -18,9 +18,9 @@
     "color"
   ],
   "bugs": {
-    "url": "https://github.com/Mysbeario/color-utils/issues"
+    "url": "https://github.com/Mysbeario/color-utili/issues"
   },
-  "homepage": "https://github.com/Mysbeario/color-utils#readme",
+  "homepage": "https://github.com/Mysbeario/color-utili#readme",
   "author": "Phan Dung Tri",
   "license": "ISC",
   "devDependencies": {

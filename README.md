@@ -1,11 +1,11 @@
-# color-utils
+# color-utili
 
 This is a collection of utility functions to deal with color value (hex code and rgb).
 
 ## Installation
 
 ```bash
-$ npm install --save color-utils
+$ npm install --save color-utili
 ```
 
 ## List of functions
